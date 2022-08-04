@@ -97,8 +97,11 @@ module.exports = {
       '/states/**': {
         target: 'http://localhost:3000',
         secure: false
+      },
+      '/map/cloudcover/**': {
+        target: 'http://localhost:3000',
+        secure: false
       }
-
     }
   },
 }
