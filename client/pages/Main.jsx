@@ -13,6 +13,8 @@ const Main = () => {
 
   const [selectedState, setSelectedState] = useState('-- Select a State --');
   const [selectedCounty, setSelectedCounty] = useState('-- Select a County --');
+  const [cloudData, setCloudData] = useState('');
+  const [zip, setZip] = useState([]);
 
   const [weatherData, setWeatherData] = useState([]);
   // On component mount
@@ -107,43 +109,28 @@ const Main = () => {
     try {
       console.log('Get data firing');
       const response = await fetch(`http://localhost:8080/map/states/${selectedState}/${selectedCounty}`);
-      const data = response.json();
-      data.then((data) => { console.log('fetch weather data', data); setWeatherData(data); });
-      //console.log(data);
-    }
-    catch (err) {
+      const data = await response.json();
+      //console.log(Data); 
+      setWeatherData(data);
+
+      console.log('Get zipcode firing');
+      console.log(zip);
+      const response2 = await fetch(`http://localhost:8080/map/cloudcover/${zip}`);
+      // console.log(response2);
+      const data2 = await response2.json();
+      console.log(data2); 
+      setCloudData(data2.data);
+      console.log(cloudData);
+      //console.log(weatherData);
+    } catch (err){
       console.log(`Error has occurred on getting weather data. Error: ${err}`);
     }
-
   };
 
 
 
   return (
     <>
-<<<<<<< HEAD
-        <div className='body'>
-        
-          {/* Location Table */}
-          <div className='dropdown-body'>
-
-            <div className='stateDrop'>
-                <h3>States</h3>
-                <select id= "selectState" onChange = {(e) => {setSelectedState(e.target.value);}}>
-                  {statesDropdown}
-                </select>
-                </div>
-
-            <div className='countyDrop'>
-                <h3>Counties</h3>
-                <select id= "selectCounty" onChange = {(e) => {setSelectedCounty(e.target.value);}}>
-                  {countiesDropdown}
-                </select>
-            </div>
-
-              <button id = 'submitStateCounty' type ='submit' onClick = {handleEvent}>Get Data</button>
-
-=======
       {/* <div className='main'> */}
       <div className='body'>
 
@@ -161,9 +148,10 @@ const Main = () => {
               <select id="selectCounty" onChange={(e) => { setSelectedCounty(e.target.value); }}>
                 {countiesDropdown}
               </select>
+              <h3>Zip Code</h3>
+              <input type="box" size = '5' onChange ={(e) => {setZip(e.target.value)}}/>
             </div>
             <button id='submitStateCounty' type='submit' onClick={handleEvent}>Get Data</button>
->>>>>>> dev
           </div>
         </div>
 
@@ -180,11 +168,8 @@ const Main = () => {
         < DataTable data={weatherData} />
 
       </div>
-<<<<<<< HEAD
-=======
       {/* </div> */}
       {/* </div> */}
->>>>>>> dev
     </>
   );
 };
