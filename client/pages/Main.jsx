@@ -132,8 +132,12 @@ const Main = () => {
   return (
     <>
       {/* <div className='main'> */}
-      <div className='body'>
-
+      <container className='body'>
+        <div className="video-background">
+          <div className="video-foreground">
+            <iframe src="https://www.youtube.com/embed/W0LHTWG-UmQ?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
         {/* Location Table */}
         <div className='table-container'>
           <div className='testTable'>
@@ -165,9 +169,10 @@ const Main = () => {
         />
 
         {/* data table */}
-        < DataTable data={weatherData} />
-
-      </div>
+        <container className ='dataTable'>
+          < DataTable data={weatherData} />
+        </container>
+      </container>
       {/* </div> */}
       {/* </div> */}
     </>

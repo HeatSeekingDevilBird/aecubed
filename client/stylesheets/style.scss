@@ -2,6 +2,10 @@
 
 $nav-theme-color: rgb(0, 0, 130);
 
+.testTable {
+  padding-left: 50px;
+  color: #f0f3f3;
+}
 
 .body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
@@ -9,10 +13,50 @@ $nav-theme-color: rgb(0, 0, 130);
   grid: 1fr 1fr / 1fr 0.75fr;
   height: 100vh;
   width: 100vw;
-  background-color: #31AA50;
-  color: rgb(0, 0, 0);
+  color: rgb(20, 20, 20);
 }
 
+* { box-sizing: border-box; }
+.video-background {
+  background: #000;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -99;
+}
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+#vidtop-content {
+	top: 0;
+	color: #fff;
+}
+.vid-info { position: absolute; top: 0; right: 0; width: 33%; background: rgba(0,0,0,0.3); color: #fff; padding: 1rem; font-family: Avenir, Helvetica, sans-serif; }
+.vid-info h1 { font-size: 2rem; font-weight: 700; margin-top: 0; line-height: 1.2; }
+.vid-info a { display: block; color: #fff; text-decoration: none; background: rgba(0,0,0,0.5); transition: .6s background; border-bottom: none; margin: 1rem auto; text-align: center; }
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground { width: 300%; left: -100%; }
+}
+@media all and (max-width: 600px) {
+.vid-info { width: 50%; padding: .5rem; }
+.vid-info h1 { margin-bottom: .2rem; }
+}
+@media all and (max-width: 500px) {
+.vid-info .acronym { display: none; }
+}
+
+.dataTable {
+  background-color: #5b759844;
+  
+}
 
 .navbar {
   font-family: 'Ibarra Real Nova', serif;
@@ -23,6 +67,8 @@ $nav-theme-color: rgb(0, 0, 130);
   margin: auto;
   height: auto;
   gap: 20px;
+  background-color: #5b759800;
+  
 }
 
 ;
@@ -30,7 +76,8 @@ $nav-theme-color: rgb(0, 0, 130);
 .navbar-about,
 .navbar-main {
   text-decoration: none;
-  color: black;
+  color: rgb(246, 242, 242);
+  
 }
 
 #about-logo {
